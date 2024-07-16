@@ -41,7 +41,6 @@ document.querySelector('#frmSinhVien').onsubmit = async function (e) {
     for (let input of arrInput) {
         sv[input.id] = input.value;
     }
-    //console.log(sv);
     let { maSinhVien, tenSinhVien, soDienThoai, email, diemHoa, diemLy, diemToan, diemRenLuyen, loaiSinhVien } = sv;
 
     let valid = true;
@@ -89,7 +88,6 @@ window.xoaSinhVien = async function (id) {
     });
     const data = await response.json();
     console.log(data);
-    //Sau khi xoá thành công thì gọi lại api lấy danh sách sinh viên
     getAllSinhVienAsync();
 }
 
@@ -99,7 +97,6 @@ window.chinhSua = async function (id) {
     const data = await response.json();
     console.log(data);
     let svEdit = data;
-    //Sau khi lấy dữ liệu từ api của sinh viên đó về thì load tương ứng với id của input
     let arrInput = document.querySelectorAll('#frmSinhVien .form-control');
     for (let input of arrInput) {
         input.value = svEdit[input.id];
@@ -107,7 +104,6 @@ window.chinhSua = async function (id) {
 }
 
 document.querySelector('#btnLuuThongTin').onclick = async function (e) {
-    //Lấy dữ liệu người dùng nhập từ giao diện bỏ vào object api qui định
     let sv = new SinhVien();
     let arrInput = document.querySelectorAll('#frmSinhVien .form-control');
     for (let input of arrInput) {
@@ -124,7 +120,6 @@ document.querySelector('#btnLuuThongTin').onclick = async function (e) {
     });
     const data = await response.json();
     console.log(data);
-    //Sau khi cập nhật thành công thì load lại api lấy danh sách sinh viên
     getAllSinhVienAsync();
     resetForm();
 }
