@@ -1,5 +1,4 @@
 export function kiemTraRong(value, selectorError, name) {
-    //     abc    .trim() => abc
     if (value.trim() === '') {
         document.querySelector(selectorError).innerHTML = `${name} không được bỏ trống !`;
         return false;
