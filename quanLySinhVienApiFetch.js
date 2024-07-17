@@ -35,14 +35,12 @@ window.renderTableSinhVien = function (arrSV) {//input là mảng
 
 document.querySelector('#frmSinhVien').onsubmit = async function (e) {
     e.preventDefault();
-    //input: Dữ liệu người dùng nhập từ form
     let sv = new SinhVien();
     let arrInput = document.querySelectorAll('#frmSinhVien .form-control');
     for (let input of arrInput) {
         sv[input.id] = input.value;
     }
     let { maSinhVien, tenSinhVien, soDienThoai, email, diemHoa, diemLy, diemToan, diemRenLuyen, loaiSinhVien } = sv;
-
     let valid = true;
     for (let key in sv) {
         valid &= kiemTraRong(sv[key], `#err_required_${key}`, key);
@@ -109,8 +107,6 @@ document.querySelector('#btnLuuThongTin').onclick = async function (e) {
     for (let input of arrInput) {
         sv[input.id] = input.value;
     }
-    //sv = {maSinhVien,tenSinhVien,...} =>format backend qui định
-    //url backend qui định
     const response = await fetch(`https://svcy.myclass.vn/api/SinhVienApi/CapNhatThongTinSinhVien?maSinhVien=${sv.maSinhVien}`, {
         method: 'PUT',
         headers: {
