@@ -7,7 +7,7 @@ async function getAllSinhVienAsync() {
     renderTableSinhVien(data);
 };
 
-window.renderTableSinhVien = function (arrSV) {//input là mảng
+window.renderTableSinhVien = function (arrSV) {
     let htmlString = '';
     for (let sv of arrSV) {
         htmlString += `
